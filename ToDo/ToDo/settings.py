@@ -29,6 +29,13 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+REST_FRAMEWORK= {
+    'DEFAULT_RENDERER_CLASSES':
+        [
+            'rest_framework.renderers.JSONRenderer',
+            'rest_framework.renderers.BrowsableAPIRenderer',
+        ]
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,9 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'ToDo',
     'ToDoApp',
-]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,3 +130,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
