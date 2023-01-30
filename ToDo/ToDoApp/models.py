@@ -11,9 +11,14 @@ class Project(models.Model):
 
 
 class Users(models.Model):
-    user_id = models.IntegerField(MinValueValidator=0, unique=True)
+    user_id = models.IntegerField(unique=True)
     first_name = models.CharField(max_length=64)
     second_name = models.CharField(max_length=64)
+
+
+class Status(models.TextChoices):
+    ACTIVE = "Act.", 'Active'
+    Closed = "Clos.", 'Closed'
 
 
 class TODO(models.Model):
@@ -29,13 +34,8 @@ class TODO(models.Model):
         on_delete=models.CASCADE,
     )
     ACTIVE = 'Active',
-    Closed = 'Closed'
-    status_choice = [
-        (ACTIVE, 'Active'),
-        (Closed, 'Closed'),
-    ]
     status = models.CharField(
         max_length=50,
-        choices=status_choice,
-        default='Status',
+        choices=Status.choices,
+        default=Status.ACTIVE,
     )
