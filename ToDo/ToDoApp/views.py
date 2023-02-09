@@ -16,6 +16,7 @@ class ProjectPagination(PageNumberPagination):
 class ToDoPagination(PageNumberPagination):
     page_size = 20
 
+
 # Project
 class ProjectViewSet(viewsets.ViewSet):
     renderer_classes = [JSONRenderer]
@@ -43,10 +44,11 @@ class UsersModelViewSet(ModelViewSet):
         serializer = UsersModelSerializer(user)
         return Response(serializer.data)
 
-  def update(self, request, pk=None):
-        user = update(Users, pk=pk)
-        serializer = UsersModelSerializer(user)
-        return Response(serializer.data)
+
+def update(self, request, pk=None):
+    user = update(Users, pk=pk)
+    serializer = UsersModelSerializer(user)
+    return Response(serializer.data)
 
 
 # ToDo
@@ -55,14 +57,13 @@ class ToDoModelViewSet(ModelViewSet):
     serializer_class = ToDoModelSerializer
 
 
-
 class StatusModelViewSet(ModelViewSet):
     renderer_classes = [JSONRenderer]
     queryset = Status.objects.all()
     serializer_class = StatusModelSerializer
     pagination_class = ToDoPagination
 
-   def get_queryset(self):
+    def get_queryset(self):
         from django.db.models import Project_name
         project_name = Project_name
         return Project.objects.filter(name_contains=project_name)
