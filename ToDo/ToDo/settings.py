@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'ToDoApp',
     'rest_framework.authtoken',
-    'corsheaders'
+    'corsheaders',
+    "django.contrib.staticfiles",
+    "graphene_django",
 ]
 
 MIDDLEWARE = [
@@ -149,3 +151,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
 "http://localhost:3000",
 ]
+
+GRAPHENE = {
+"SCHEMA": "library.schema.schema"
+}
