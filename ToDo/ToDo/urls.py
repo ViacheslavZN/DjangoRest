@@ -5,6 +5,8 @@ from ToDo.ToDoApp.views import ProjectViewSet
 from ToDo.ToDoApp.views import UsersModelViewSet
 from ToDo.ToDoApp.views import StatusModelViewSet
 from ToDo.ToDoApp.views import ToDoModelViewSet
+from django.urls import path
+from graphene_django.views import GraphQLView
 
 router = DefaultRouter()
 router.register('Projest', ProjectViewSet)
@@ -16,5 +18,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
-    path('api-token-auth/', views.obtain_auth_token)
+    path('api-token-auth/', views.obtain_auth_token),
+    path("graphql/", GraphQLView.as_view(graphiql=True))
 ]
